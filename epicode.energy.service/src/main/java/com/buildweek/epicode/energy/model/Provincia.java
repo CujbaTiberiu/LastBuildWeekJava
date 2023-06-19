@@ -1,5 +1,8 @@
 package com.buildweek.epicode.energy.model;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,12 +24,14 @@ public class Provincia {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
+	 
+	 @CsvBindByName(column = "SIGLA", required = true)
+	 @CsvBindByPosition(position = 1, format = ";")
+	 private String sigla;
 	
+	@CsvBindByName(column = "NOME", required = true)
+	@CsvBindByPosition(position = 0, format = ";")
 	private String nome;
 	
-	private String regione;
-	
-	private String sigla;
-
 
 }
