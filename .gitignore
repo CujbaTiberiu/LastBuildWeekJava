@@ -18,3 +18,4 @@ buildNumber.properties
 /.metadata/
 epicode.energy.service/logs/application.log
 *.log
+*.log
