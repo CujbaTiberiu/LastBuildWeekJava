@@ -5163,3 +5163,59 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 18:35:41.996 [RMI TCP Connection(7)-127.0.0.1] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
 18:35:42.055 [RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 18:35:42.125 [RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18:36:03.854 [restartedMain] INFO  c.b.e.e.SpringSecurityProjectApplication - Starting SpringSecurityProjectApplication using Java 17.0.7 with PID 20180 (C:\Users\cujba\OneDrive\Desktop\bwJava\LastBuildWeekJava\epicode.energy.service\target\classes started by cujba in C:\Users\cujba\OneDrive\Desktop\bwJava\LastBuildWeekJava\epicode.energy.service)
+18:36:03.861 [restartedMain] INFO  c.b.e.e.SpringSecurityProjectApplication - No active profile set, falling back to 1 default profile: "default"
+18:36:03.925 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+18:36:03.925 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+18:36:05.067 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:36:05.211 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135 ms. Found 4 JPA repository interfaces.
+18:36:05.955 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+18:36:05.968 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:36:05.968 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+18:36:06.051 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:36:06.051 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2126 ms
+18:36:06.200 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:36:06.258 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.2.Final
+18:36:06.263 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+18:36:06.404 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+18:36:06.541 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:36:06.558 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:36:06.797 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4809502
+18:36:06.799 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18:36:06.853 [restartedMain] INFO  org.hibernate.orm.dialect - HHH035001: Using dialect: org.hibernate.dialect.PostgreSQLDialect, version: org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$DialectResolutionInfoImpl@30df0397
+18:36:07.303 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+18:36:08.780 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+18:36:08.803 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.803 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la relazione "clienti" non esiste, saltata
+18:36:08.803 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.803 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la relazione "clienti" non esiste, saltata
+18:36:08.804 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.804 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la relazione "comuni" non esiste, saltata
+18:36:08.804 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.804 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la relazione "indirizzi" non esiste, saltata
+18:36:08.805 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.805 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la relazione "users_roles" non esiste, saltata
+18:36:08.805 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.806 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la relazione "users_roles" non esiste, saltata
+18:36:08.806 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.806 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la tabella "clienti" non esiste, saltata
+18:36:08.807 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.807 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la tabella "comuni" non esiste, saltata
+18:36:08.808 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.808 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la tabella "indirizzi" non esiste, saltata
+18:36:08.808 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.808 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la tabella "province" non esiste, saltata
+18:36:08.809 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.809 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la tabella "roles" non esiste, saltata
+18:36:08.810 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.810 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la tabella "users" non esiste, saltata
+18:36:08.811 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+18:36:08.812 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - la tabella "users_roles" non esiste, saltata
+18:36:08.912 [restartedMain] INFO  o.h.t.s.i.e.GenerationTargetToDatabase - HHH000476: Executing script '[injected ScriptSourceInputNonExistentImpl script]'
+18:36:08.916 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18:36:09.567 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18:36:10.015 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5a580541, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@79216f19, org.springframework.security.web.context.SecurityContextHolderFilter@2d801ce3, org.springframework.security.web.header.HeaderWriterFilter@cc7d6b0, org.springframework.web.filter.CorsFilter@1e3577b2, org.springframework.security.web.authentication.logout.LogoutFilter@1dfbc0a6, com.buildweek.epicode.energy.security.JwtAuthenticationFilter@ce929d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4d911133, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@55f677f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b008c81, org.springframework.security.web.session.SessionManagementFilter@5191c294, org.springframework.security.web.access.ExceptionTranslationFilter@984e479, org.springframework.security.web.access.intercept.AuthorizationFilter@1c07fba8]
+18:36:10.181 [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+18:36:10.351 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+18:36:10.395 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+18:36:10.405 [restartedMain] INFO  c.b.e.e.SpringSecurityProjectApplication - Started SpringSecurityProjectApplication in 7.0 seconds (process running for 8.324)
