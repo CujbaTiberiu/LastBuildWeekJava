@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -27,8 +28,8 @@ import lombok.NoArgsConstructor;
 public class Comune {
 	
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
+	 @SequenceGenerator(name = "seq1_id",sequenceName = "seq1_id", allocationSize = 1, initialValue = 1)
+	 @GeneratedValue(generator = "seq1_id")	 private Long id;
 	
 	 @CsvBindByName(column = "nome", required = true)
 	 @CsvBindByPosition(position = 0, format = ";")

@@ -29,6 +29,7 @@ import com.buildweek.epicode.energy.repository.ComuneRepository;
 import com.buildweek.epicode.energy.repository.RoleRepository;
 import com.buildweek.epicode.energy.repository.UserRepository;
 import com.buildweek.epicode.energy.service.AuthService;
+import com.buildweek.epicode.energy.service.ClienteService;
 import com.buildweek.epicode.energy.service.ComuneService;
 import com.buildweek.epicode.energy.service.ProvinciaService;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -45,7 +46,7 @@ public class AuthRunner implements ApplicationRunner {
 	@Autowired AuthService authService;
 	@Autowired ComuneService comuneService;
 	@Autowired ProvinciaService provService;
-	
+	@Autowired ClienteService cliservice;
 	private Set<Role> adminRole;
 	private Set<Role> moderatorRole;
 	private Set<Role> userRole;
@@ -55,12 +56,14 @@ public class AuthRunner implements ApplicationRunner {
 		System.out.println("Run...");
 		// Metodo da lanciare solo la prima volta
 		// Serve per salvare i ruoli nel DB
-//		setRoleDefault();
+		setRoleDefault();
 	
 		saveProvinceDb();
 		//CSVReaderWriter();
 		
 		saveComuniDb();
+		
+		Creaclienti(10);
 	}
 	
 	private void setRoleDefault() {
@@ -112,6 +115,13 @@ comuneService.add(comune);
 	System.out.println(comune);
 	}
 	}
+
+public void Creaclienti(int clienticrea) {
+	for(int i=0; i<clienticrea; i++) {
+		cliservice.Creafake();
+	}
+}
+
 }
 
 	
