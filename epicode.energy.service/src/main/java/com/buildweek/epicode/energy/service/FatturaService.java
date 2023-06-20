@@ -7,13 +7,9 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.buildweek.epicode.energy.enums.StatoFattura;
-import com.buildweek.epicode.energy.enums.TipoCliente;
 import com.buildweek.epicode.energy.model.Cliente;
-import com.buildweek.epicode.energy.model.Comune;
 import com.buildweek.epicode.energy.model.Fattura;
-import com.buildweek.epicode.energy.model.Indirizzo;
 import com.buildweek.epicode.energy.repository.FatturaRepository;
 import com.github.javafaker.Faker;
 
@@ -24,6 +20,7 @@ public class FatturaService{
 
 	@Autowired FatturaRepository db;
 	@Autowired ClienteService dbCliente;
+	
 	Random random = new Random();
 	
 	public void createFakeFattura() {
@@ -35,10 +32,12 @@ public class FatturaService{
 		fattura.setData(dbCliente.getRandomDateBetween(LocalDate.of(2002, 01, 01), LocalDate.now()));
 		// sistemare importo fattura - troppo grande
 		fattura.setImporto(fk.random().nextLong());
+		fattura.setNumero(getLastFattura());
 		StatoFattura[] statoFatture = StatoFattura.values();
 		fattura.setStatofattura(statoFatture[random.nextInt(statoFatture.length)]);
 		db.save(fattura);
 	}
+
 	
 	public Cliente randomCliente() {
 		 List<Cliente> listaClienti = dbCliente.getAll();
@@ -61,9 +60,22 @@ public class FatturaService{
 
 	}
 */
+
+	
 	
 	public Fattura save(Fattura f) {
 		return db.save(f);
+	}
+	public int getLastFattura(){
+		List<Fattura> allFatture = db.findAll();
+		if (allFatture.size() > 0) {
+			Fattura fattura = allFatture.get(allFatture.size()-1);
+			System.out.println(fattura.getId());
+			return fattura.getNumero()+1;
+		} else {
+			return 0;
+		}
+		
 	}
 	
 	public List<Fattura> getAll(){

@@ -1,16 +1,9 @@
 package com.buildweek.epicode.energy.runner;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -23,7 +16,6 @@ import com.buildweek.epicode.energy.entity.Role;
 import com.buildweek.epicode.energy.model.Comune;
 import com.buildweek.epicode.energy.model.ComuneDTOcsv;
 import com.buildweek.epicode.energy.model.Provincia;
-import com.buildweek.epicode.energy.repository.ComuneRepository;
 import com.buildweek.epicode.energy.repository.RoleRepository;
 import com.buildweek.epicode.energy.repository.UserRepository;
 import com.buildweek.epicode.energy.service.AuthService;
@@ -60,14 +52,13 @@ public class AuthRunner implements ApplicationRunner {
 		System.out.println("Run...");
 		// Metodo da lanciare solo la prima volta
 		// Serve per salvare i ruoli nel DB
-		//setRoleDefault();
+		setRoleDefault();
 
-		//saveProvinceDb();
-		// CSVReaderWriter();
+		saveProvinceDb();
 
-		//saveComuniDb();
+		saveComuniDb();
 
-		//Creaclienti(10);
+		Creaclienti(10);
 		creaFattura(10);
 	}
 
