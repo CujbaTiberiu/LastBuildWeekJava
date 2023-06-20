@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,8 @@ import lombok.NoArgsConstructor;
 public class Indirizzo {
 	
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
+	 @SequenceGenerator(name = "seq3_id",sequenceName = "seq3_id", allocationSize = 1, initialValue = 1)
+	 @GeneratedValue(generator = "seq3_id")	 private Long id;
 
 	private String via;
 	
@@ -34,7 +35,7 @@ public class Indirizzo {
 	
 	private String localita;
 	
-	private Integer cap;
+	private String cap;
 	
 	@OneToOne
 	private Comune comune;

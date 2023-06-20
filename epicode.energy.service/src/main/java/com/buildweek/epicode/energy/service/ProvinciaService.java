@@ -14,5 +14,8 @@ public class ProvinciaService {
 	public Provincia save(Provincia p) {
 		return db.save(p);
 	}
-
+public Provincia FindByName(String name) {
+	return db.findByNome(name);
+	
+}
 }
