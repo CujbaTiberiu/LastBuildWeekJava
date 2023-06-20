@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.buildweek.epicode.energy.entity.ERole;
 import com.buildweek.epicode.energy.entity.Role;
+import com.buildweek.epicode.energy.enums.StatoFattura;
 import com.buildweek.epicode.energy.model.Comune;
 import com.buildweek.epicode.energy.model.ComuneDTOcsv;
 import com.buildweek.epicode.energy.model.Provincia;
@@ -60,6 +61,11 @@ public class AuthRunner implements ApplicationRunner {
 
 		Creaclienti(10);
 		creaFattura(10);
+		
+		System.out.println(dbFattura.findBystatofattura(StatoFattura.CONSEGNATO));
+		System.out.println(dbFattura.findBystatofattura(StatoFattura.ACCETTATO));
+		System.out.println(dbFattura.findBystatofattura(StatoFattura.CARICATO));
+		System.out.println(dbFattura.findBystatofattura(StatoFattura.IN_GESTIONE));
 	}
 
 	private void setRoleDefault() {

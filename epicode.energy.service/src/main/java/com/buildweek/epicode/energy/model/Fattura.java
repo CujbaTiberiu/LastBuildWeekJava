@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.buildweek.epicode.energy.enums.StatoFattura;
+import com.buildweek.epicode.energy.repository.FatturaRepository;
 import com.buildweek.epicode.energy.service.FatturaService;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -37,12 +39,14 @@ public class Fattura {
 	private Integer anno;
 	private LocalDate data;
 	private Long importo;
-
 	private int numero;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_detail")
 	private Cliente cliente;
 	
-
+	@Override
+	public String toString() {
+		return "id:" + this.id + " " +" stato:"+ this.statofattura +" anno:"+ this.getAnno() +" numero:"+this.getNumero() +" importo:"+ this.getImporto();
+	}
 }
