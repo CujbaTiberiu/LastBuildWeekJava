@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 import com.buildweek.epicode.energy.entity.ERole;
 import com.buildweek.epicode.energy.entity.Role;
 import com.buildweek.epicode.energy.model.Comune;
+import com.buildweek.epicode.energy.model.ComuneDTOcsv;
 import com.buildweek.epicode.energy.model.Provincia;
 import com.buildweek.epicode.energy.repository.ComuneRepository;
 import com.buildweek.epicode.energy.repository.RoleRepository;
@@ -54,10 +55,12 @@ public class AuthRunner implements ApplicationRunner {
 		System.out.println("Run...");
 		// Metodo da lanciare solo la prima volta
 		// Serve per salvare i ruoli nel DB
-		setRoleDefault();
+//		setRoleDefault();
 	
 		saveProvinceDb();
 		//CSVReaderWriter();
+		
+		saveComuniDb();
 	}
 	
 	private void setRoleDefault() {
@@ -88,54 +91,31 @@ public class AuthRunner implements ApplicationRunner {
 	
 	private void saveProvinceDb() throws IllegalStateException, IOException {
 		List<Provincia> listaProvince = new CsvToBeanBuilder<Provincia>(new FileReader("../epicode.energy.service/src/main/resources/csv/province-italiane.csv")).withSeparator(';').withType(Provincia.class).build().parse();
-		//System.out.println(listaProvince);
-		Iterator<Provincia> iP = listaProvince.iterator();
-		//while(iP.hasNext()) {
-			//Provincia pr = iP.next();
-			//System.out.println(pr.getNome());
-			//System.out.println(pr.getSigla());
-		//}
-		//Writer w =  new FileWriter("../epicode.energy.service/src/main/resources/csv/yourfile.txt");
-		//for(Provincia provincia : listaProvince) {
-			//provService.save(provincia);
-			//System.out.println(comune);
-			//w.append(comune.toString());
+		for(int i = 1; i<listaProvince.size();i++) {
+		provService.save(listaProvince.get(i));
+		System.out.println(listaProvince.get(i));
+		}
 		}
 	
+
+private void saveComuniDb() throws IllegalStateException, IOException {
+	List<ComuneDTOcsv> listaComuniDTO = new CsvToBeanBuilder<ComuneDTOcsv>(new FileReader("../epicode.energy.service/src/main/resources/csv/comuni-italiani2.csv")).withSeparator(';').withType(ComuneDTOcsv.class).build().parse();
+
+
 	
-	/*public void CSVReaderWriter() {
-	        String csvFile = "../epicode.energy.service/src/main/resources/csv/comuni-italiani2.csv";
-	        String outputFile = "../epicode.energy.service/src/main/resources/csv/output.txt";
-	        String line;
+	for(int i = 1; i<listaComuniDTO.size();i++) {
+		
+Comune comune = new Comune();
+comune.setNome(listaComuniDTO.get(i).getNome());
+comune.setProvincia(provService.FindByName(listaComuniDTO.get(i).getProvincia()));
+comuneService.add(comune);
+	System.out.println(comune);
+	}
+	}
+}
 
-	        try (BufferedReader br = new BufferedReader(new FileReader(csvFile));
-	             FileWriter writer = new FileWriter(outputFile)) {
-
-	            while ((line = br.readLine()) != null) {
-	                // Separare i valori delle colonne del CSV utilizzando la virgola come delimitatore
-	                String[] values = line.split(",");
-
-	                // Iterare sui valori e scriverli nel file di output
-	                for (String value : values) {
-	                    writer.write(value);
-	                    writer.write("\t"); // Aggiungi una tabulazione tra i valori
-	                    Comune c = new Comune();
-	                    String[] arr = value.split(";");
-	                    c.setNome(arr[0]);
-	                    c.setProvincia(arr[1]);
-	                    
-	                }
-	                writer.write("\n"); // Vai a capo dopo aver scritto una riga
-	            }
-
-	            System.out.println("Il file CSV è stato letto e riscritto con successo nel file di testo.");
-	        } catch (IOException e) {
-	            System.out.println("Si è verificato un errore durante la lettura o la scrittura del file.");
-	            e.printStackTrace();
-	        }*/
-	    }
 	
-//}
+	
 	
 
 

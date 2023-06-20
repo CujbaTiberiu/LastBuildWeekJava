@@ -9,9 +9,10 @@ import com.buildweek.epicode.energy.repository.ComuneRepository;
 @Service
 public class ComuneService {
 	
-	@Autowired ComuneRepository db;
+	@Autowired
+	 ComuneRepository db;
 	
-	public Comune add(Comune comune) {
+	public  Comune add(Comune comune) {
 		return db.save(comune);
 	}
 	

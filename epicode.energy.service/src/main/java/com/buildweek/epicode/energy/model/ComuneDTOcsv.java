@@ -1,8 +1,5 @@
 package com.buildweek.epicode.energy.model;
 
-import java.time.LocalDate;
-
-import com.buildweek.epicode.energy.enums.TipoCliente;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
@@ -18,23 +15,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@NotNull
-@Table(name = "comuni")
-public class Comune {
-	
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
-	
-	 @CsvBindByName(column = "nome", required = true)
-	 @CsvBindByPosition(position = 0, format = ";")
-	private String nome;
-	
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	private Provincia provincia;
 
+
+@Data
+
+public class ComuneDTOcsv {
+	
+		 @CsvBindByName(column = "nome", required = true)
+		 @CsvBindByPosition(position = 0, format = ";")
+		private String nome;
+		
+
+		 @CsvBindByName(column = "provincia", required = true)
+		 @CsvBindByPosition(position = 1, format = ";")
+	private String provincia;
 }

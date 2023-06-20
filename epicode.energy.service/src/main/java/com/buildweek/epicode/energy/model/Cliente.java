@@ -1,16 +1,20 @@
 package com.buildweek.epicode.energy.model;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import org.hibernate.annotations.CollectionId;
 import com.buildweek.epicode.energy.enums.TipoCliente;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -75,6 +79,12 @@ public class Cliente {
 	 @OneToOne
 	 @JoinColumn(name = "indirizzo_sede_operativa_id")
 	 private Indirizzo indirizzoSedeOperativa;
+	 
+	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
+	 
+	 @Column(name="fatture")
+	 private List<Fattura> listafatture;
+	 
 	 
 }
 
