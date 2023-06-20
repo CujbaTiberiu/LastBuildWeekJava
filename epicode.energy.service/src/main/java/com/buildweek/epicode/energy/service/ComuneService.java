@@ -1,5 +1,7 @@
 package com.buildweek.epicode.energy.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,13 @@ public class ComuneService {
 		return db.save(comune);
 	}
 	
-}
+	public Comune getById(Long id) {
+		return db.findById(id).get();
+	}
+	
+	public List<Comune> GetAllComuni(){
+		return db.findAll();
+		
+	}
+} 
+

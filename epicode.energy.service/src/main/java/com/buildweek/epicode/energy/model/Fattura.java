@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +29,8 @@ import lombok.NoArgsConstructor;
 @Table(name="fatture")
 public class Fattura {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@SequenceGenerator(name = "seq2_id",sequenceName = "seq2_id", allocationSize = 1, initialValue = 1)
+	 @GeneratedValue(generator = "seq2_id")	private Long id;
 	
 	@Enumerated(EnumType.STRING)
 	private StatoFattura statofattura;

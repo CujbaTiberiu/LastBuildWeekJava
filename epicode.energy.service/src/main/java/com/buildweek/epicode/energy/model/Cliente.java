@@ -16,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,8 @@ public class Cliente {
 	
 	
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @SequenceGenerator(name = "seq_id",sequenceName = "seq_id", allocationSize = 1, initialValue = 1)
+	 @GeneratedValue(generator = "seq_id")
 	 private Long id;
 	 
 	 @Column(name = "cognome_contatto")
