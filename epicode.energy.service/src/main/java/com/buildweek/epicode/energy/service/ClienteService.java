@@ -77,7 +77,7 @@ public class ClienteService{
 		indirizzo.setComune(sc.getById(random.nextLong(listacomuni.size() - 1)));
 		indirizzo.setLocalita(indirizzo.getComune().getNome());
 		indirizzo.setVia(fk.address().streetAddress());
-		dbindirizzo.Save(indirizzo);
+		//dbindirizzo.Save(indirizzo);
 		return indirizzo;
 	}
 	

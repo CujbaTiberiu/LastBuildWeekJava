@@ -55,6 +55,10 @@ public class FatturaService {
 		return db.save(f);
 	}
 	
+	public Fattura getById(long id) {
+		return db.findById(id).get();
+	}
+	
 	//Ricerca per l'ultima fattura
 	public int getLastFattura() {
 		List<Fattura> allFatture = db.findAll();
@@ -108,7 +112,7 @@ public class FatturaService {
 	}
 	
 	//Ricerca Fatture per cliente
-//	public List<Fattura> findByCliente(Long id){
-//		return db.findByCliente(id);
-//	}
+	public List<Fattura> findByCliente(Long id){
+		return db.findByCliente(id);
+	}
 }
