@@ -62,10 +62,14 @@ public class AuthRunner implements ApplicationRunner {
 		Creaclienti(10);
 		creaFattura(10);
 		
+		
 		System.out.println(dbFattura.findBystatofattura(StatoFattura.CONSEGNATO));
 		System.out.println(dbFattura.findBystatofattura(StatoFattura.ACCETTATO));
 		System.out.println(dbFattura.findBystatofattura(StatoFattura.CARICATO));
 		System.out.println(dbFattura.findBystatofattura(StatoFattura.IN_GESTIONE));
+		
+		//System.out.println(dbFattura.findByCliente((long) 1)); 
+		System.out.println(dbFattura.findByRangeDiImporti(1, 300000)); 
 	}
 
 	private void setRoleDefault() {
@@ -100,7 +104,7 @@ public class AuthRunner implements ApplicationRunner {
 				.withSeparator(';').withType(Provincia.class).build().parse();
 		for (int i = 1; i < listaProvince.size(); i++) {
 			provService.save(listaProvince.get(i));
-			System.out.println(listaProvince.get(i));
+			//System.out.println(listaProvince.get(i));
 		}
 	}
 
@@ -115,7 +119,7 @@ public class AuthRunner implements ApplicationRunner {
 			comune.setNome(listaComuniDTO.get(i).getNome());
 			comune.setProvincia(provService.FindByName(listaComuniDTO.get(i).getProvincia()));
 			comuneService.add(comune);
-			System.out.println(comune);
+			//System.out.println(comune);
 		}
 	}
 

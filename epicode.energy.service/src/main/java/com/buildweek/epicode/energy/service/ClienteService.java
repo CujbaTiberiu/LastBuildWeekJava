@@ -100,8 +100,8 @@ public class ClienteService{
 	}
 
 	//Modifica Cliente
-	public Optional<?> putCliente(Cliente cliente) {
-		if(!dbcliente.existsById(cliente.getId())) {
+	public Optional<?> putCliente(Cliente cliente, long id) {
+		if(!dbcliente.existsById(id)) {
 			throw new EntityNotFoundException("Cliente non esiste");
 		}else {
 			return Optional.of(dbcliente.save(cliente));

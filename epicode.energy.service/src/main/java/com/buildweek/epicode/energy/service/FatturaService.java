@@ -49,6 +49,7 @@ public class FatturaService {
 
 	}
 
+	//CRUD
 
 	//Aggiunta di una fattura
 	public Fattura save(Fattura f) {
@@ -107,12 +108,13 @@ public class FatturaService {
 	}
 	
 	//Ricerca per Rage di importi
-	public List<Fattura> findByRangeDiImporti(Long min, Long max) {
-		return db.findByRangeDiImporti(min, max);
+	public List<Fattura> findByRangeDiImporti(long min, long max) {
+		return db.findByImportoBetween(min, max);
 	}
 	
 	//Ricerca Fatture per cliente
 	public List<Fattura> findByCliente(Long id){
-		return db.findByCliente(id);
+		System.out.println(id);
+		return db.findByClienteId(id);
 	}
 }

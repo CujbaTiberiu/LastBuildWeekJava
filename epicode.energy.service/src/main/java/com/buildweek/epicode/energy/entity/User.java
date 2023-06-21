@@ -31,6 +31,8 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false, name = "last_name")
+    private String lastName;
     
     
     // Il caricamento EAGER delle raccolte significa che vengono recuperate 

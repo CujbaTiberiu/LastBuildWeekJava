@@ -77,7 +77,7 @@ public class Cliente {
 	private TipoCliente tipoCliente;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "indirizzo_sede_legale_id", nullable = false)
+	@JoinColumn(name = "indirizzo_sede_legale_id")
 	private Indirizzo indirizzoSedeLegale;
 
 	@OneToOne(cascade = CascadeType.ALL)

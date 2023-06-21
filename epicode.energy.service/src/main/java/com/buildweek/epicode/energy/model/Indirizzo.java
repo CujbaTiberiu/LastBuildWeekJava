@@ -38,5 +38,5 @@ public class Indirizzo {
 	private String cap;
 	
 	@OneToOne
-	private Comune comune;
+	private Comune comune; 
 }
