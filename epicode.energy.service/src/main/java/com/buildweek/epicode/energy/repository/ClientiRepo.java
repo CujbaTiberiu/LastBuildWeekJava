@@ -1,6 +1,10 @@
 package com.buildweek.epicode.energy.repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.buildweek.epicode.energy.model.Cliente;
@@ -8,5 +12,23 @@ import com.buildweek.epicode.energy.model.Fattura;
 @Repository
 public interface ClientiRepo  extends JpaRepository<Cliente, Long> {
 
+	//Ordinamento
+	public List<Cliente> OrderByNomeContattoAsc();
+	public List<Cliente> OrderByFatturatoAnnualeAsc();
+	public List<Cliente> OrderByDataInserimentoAsc();
+	public List<Cliente> OrderByDataUltimoContattoAsc();
+	@Query("SELECT c FROM Cliente c " +
+            "JOIN c.indirizzoSedeLegale sl " +
+            "JOIN sl.comune co " +
+            "JOIN co.provincia p " +
+            "ORDER BY p.nome ASC")
+	public List<Cliente> orderBySedeLegaleProvincia();
+	
+	
+	//Filter
+	public List<Cliente> findByFatturatoAnnuale(long fatturato);
+	public List<Cliente> findByDataInserimento(LocalDate data);
+	public List<Cliente> findByDataUltimoContatto(LocalDate data);
+	public List<Cliente> findByNomeContattoContainingIgnoreCase(String parteDelNome);
 	
 }

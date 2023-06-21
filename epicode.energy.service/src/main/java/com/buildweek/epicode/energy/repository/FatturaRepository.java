@@ -20,4 +20,6 @@ public interface FatturaRepository  extends JpaRepository<Fattura, Long>{
 	
 	@Query("SELECT c FROM Cliente c WHERE c.fatturatoAnnuale >= :minImporto AND c.fatturatoAnnuale <= :maxImporto")
 	public List<Fattura> findByRangeDiImporti(Long min, Long max);
+	
+	//public List<Fattura> findByCliente(Long id);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.buildweek.epicode.energy.enums.StatoFattura;
 import com.buildweek.epicode.energy.model.Cliente;
 import com.buildweek.epicode.energy.model.Fattura;
+import com.buildweek.epicode.energy.repository.ClientiRepo;
 import com.buildweek.epicode.energy.repository.FatturaRepository;
 import com.github.javafaker.Faker;
 import jakarta.persistence.EntityNotFoundException;
@@ -19,51 +20,42 @@ public class FatturaService {
 	@Autowired
 	FatturaRepository db;
 	@Autowired
-	ClienteService dbCliente;
+	ClienteService serviceCliente;
+	@Autowired ClientiRepo dbCliente;
 
 	Random random = new Random();
 
+	//Creazione Fattura Fake
 	public void createFakeFattura() {
 		Faker fk = new Faker(new Locale("IT-it"));
 		Fattura fattura = new Fattura();
 		fattura.setAnno(fk.number().numberBetween(1999, 2024));
 		fattura.setCliente(randomCliente());
 		// da rivedere static/public metodo getRandomDateBetween
-		fattura.setData(dbCliente.getRandomDateBetween(LocalDate.of(2002, 01, 01), LocalDate.now()));
+		fattura.setData(serviceCliente.getRandomDateBetween(LocalDate.of(2002, 01, 01), LocalDate.now()));
 		// sistemare importo fattura - troppo grande
-		fattura.setImporto(fk.random().nextLong());
+		fattura.setImporto((long)fk.random().nextInt(200000));
 		fattura.setNumero(getLastFattura());
 		StatoFattura[] statoFatture = StatoFattura.values();
 		fattura.setStatofattura(statoFatture[random.nextInt(statoFatture.length)]);
 		db.save(fattura);
 	}
-
+	
+	//Recupero Cliente dal Db e assegnazione di un fattura in modo Casuale
 	public Cliente randomCliente() {
-		List<Cliente> listaClienti = dbCliente.getAll();
+		List<Cliente> listaClienti = serviceCliente.getAll();
 		Cliente clienteRandom = listaClienti.get((int) random.nextLong(listaClienti.size() - 1));
 		return clienteRandom;
 
 	}
 
-	/*
-	 * private Indirizzo RandomAdress() {
-	 * 
-	 * Indirizzo indirizzo = new Indirizzo();
-	 * indirizzo.setCap(fk.address().zipCode());
-	 * indirizzo.setCivico(fk.address().buildingNumber()); List<Comune> listacomuni
-	 * = sc.GetAllComuni();
-	 * indirizzo.setComune(sc.getById(random.nextLong(listacomuni.size() - 1)));
-	 * indirizzo.setLocalita(indirizzo.getComune().getNome());
-	 * indirizzo.setVia(fk.address().streetAddress()); dbindirizzo.Save(indirizzo);
-	 * return indirizzo;
-	 * 
-	 * }
-	 */
 
+	//Aggiunta di una fattura
 	public Fattura save(Fattura f) {
 		return db.save(f);
 	}
-
+	
+	//Ricerca per l'ultima fattura
 	public int getLastFattura() {
 		List<Fattura> allFatture = db.findAll();
 		if (allFatture.size() > 0) {
@@ -75,36 +67,48 @@ public class FatturaService {
 		}
 
 	}
-
+	
+	//Ricerca tutte fatture
 	public List<Fattura> getAll() {
 		return db.findAll();
 	}
 
+	//Cancelazione di una fattura
 	public String deleteById(Long id) {
 		db.deleteById(id);
 		return "Fattura eleminata dal DataBase!";
 	}
-
+	
+	//Modifica di una fattura
 	public Fattura update(Fattura f, Long id) {
 		if (!db.existsById(id)) {
 			throw new EntityNotFoundException("Fattura non esiste nel DataBase!");
 		}
 		return db.save(f);
 	}
-
+	
+	//Ricerca per stato fattura
 	public List<Fattura> findBystatofattura(StatoFattura statofattura) {
 		return db.findBystatofattura(statofattura);
 	}
-
+	
+	//Ricerca per data fattura
 	public List<Fattura> findByData(LocalDate data) {
 		return db.findByData(data);
 	}
-
+	
+	//Ricerca per Anno di fattura
 	public List<Fattura> findByAnno(Integer anno) {
 		return db.findByAnno(anno);
 	}
-
+	
+	//Ricerca per Rage di importi
 	public List<Fattura> findByRangeDiImporti(Long min, Long max) {
 		return db.findByRangeDiImporti(min, max);
 	}
+	
+	//Ricerca Fatture per cliente
+//	public List<Fattura> findByCliente(Long id){
+//		return db.findByCliente(id);
+//	}
 }

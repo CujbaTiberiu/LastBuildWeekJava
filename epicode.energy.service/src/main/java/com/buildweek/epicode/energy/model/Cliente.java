@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.annotations.CollectionId;
 import com.buildweek.epicode.energy.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -82,8 +84,8 @@ public class Cliente {
 	 @JoinColumn(name = "indirizzo_sede_operativa_id")
 	 private Indirizzo indirizzoSedeOperativa;
 	 
-	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
 	 
+	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
 	 @Column(name="fatture")
 	 private List<Fattura> listafatture;
 	 

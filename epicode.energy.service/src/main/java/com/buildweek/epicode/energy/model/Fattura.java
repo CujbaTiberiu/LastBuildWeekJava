@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.buildweek.epicode.energy.enums.StatoFattura;
 import com.buildweek.epicode.energy.repository.FatturaRepository;
 import com.buildweek.epicode.energy.service.FatturaService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -43,6 +45,7 @@ public class Fattura {
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_detail")
+	@JsonIgnore
 	private Cliente cliente;
 	
 	@Override
