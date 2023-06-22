@@ -84,7 +84,7 @@ public class Cliente {
 	@JoinColumn(name = "indirizzo_sede_operativa_id")
 	private Indirizzo indirizzoSedeOperativa;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente", cascade = CascadeType.ALL)
 	@Column(name = "fatture")
 	private List<Fattura> listafatture;
 
