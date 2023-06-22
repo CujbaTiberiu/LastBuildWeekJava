@@ -25,4 +25,6 @@ public interface FatturaRepository extends JpaRepository<Fattura, Long> {
 	public List<Fattura> findByImportoBetween(long min,long max);
 
 	public List<Fattura> findByClienteId(Long id);
+	
+
 }

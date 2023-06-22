@@ -63,13 +63,13 @@ public class AuthRunner implements ApplicationRunner {
 		creaFattura(10);
 		
 		
-		System.out.println(dbFattura.findBystatofattura(StatoFattura.CONSEGNATO));
-		System.out.println(dbFattura.findBystatofattura(StatoFattura.ACCETTATO));
-		System.out.println(dbFattura.findBystatofattura(StatoFattura.CARICATO));
-		System.out.println(dbFattura.findBystatofattura(StatoFattura.IN_GESTIONE));
+		//System.out.println(dbFattura.findBystatofattura(StatoFattura.CONSEGNATO));
+		//System.out.println(dbFattura.findBystatofattura(StatoFattura.ACCETTATO));
+		//System.out.println(dbFattura.findBystatofattura(StatoFattura.CARICATO));
+		//System.out.println(dbFattura.findBystatofattura(StatoFattura.IN_GESTIONE));
 		
 		//System.out.println(dbFattura.findByCliente((long) 1)); 
-		System.out.println(dbFattura.findByRangeDiImporti(1, 300000)); 
+		//System.out.println(dbFattura.findByRangeDiImporti(1, 300000)); 
 	}
 
 	private void setRoleDefault() {

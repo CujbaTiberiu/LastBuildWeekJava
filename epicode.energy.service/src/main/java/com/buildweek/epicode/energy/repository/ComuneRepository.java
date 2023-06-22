@@ -8,4 +8,5 @@ import com.buildweek.epicode.energy.model.Comune;
 @Repository
 public interface ComuneRepository extends JpaRepository<Comune, Long>{
 
+	public boolean existsByNome(String nome);
 }

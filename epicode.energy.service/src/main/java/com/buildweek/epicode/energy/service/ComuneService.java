@@ -10,13 +10,13 @@ import com.buildweek.epicode.energy.model.Cliente;
 import com.buildweek.epicode.energy.model.Comune;
 import com.buildweek.epicode.energy.repository.ComuneRepository;
 
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ComuneService {
 	
-	@Autowired
-	 ComuneRepository db;
+	@Autowired ComuneRepository db;
 	
 	//Aggiunta Comune
 	public  Comune add(Comune comune) {
@@ -25,6 +25,9 @@ public class ComuneService {
 	
 	//Ricerca Comune per Id
 	public Comune getById(Long id) {
+		if(!db.existsById(id)) {
+			throw new EntityNotFoundException("Comune non esiste");
+		}
 		return db.findById(id).get();
 	}
 	
@@ -45,6 +48,9 @@ public class ComuneService {
 	
 	//Cancellazione
 	public String deleteComune(Long id){
+		if(db.existsById(id)) {
+			throw new EntityNotFoundException("Comune non presente nel DataBase!");	
+		}
 		db.deleteById(id);
 		return "Comune Cancellato";
 	}	

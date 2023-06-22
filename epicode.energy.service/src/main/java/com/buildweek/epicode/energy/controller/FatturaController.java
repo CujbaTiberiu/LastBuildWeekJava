@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.buildweek.epicode.energy.enums.StatoFattura;
+import com.buildweek.epicode.energy.model.Cliente;
 import com.buildweek.epicode.energy.model.Fattura;
 import com.buildweek.epicode.energy.service.ClienteService;
 import com.buildweek.epicode.energy.service.FatturaService;
@@ -25,6 +26,8 @@ public class FatturaController {
 
 	@Autowired
 	FatturaService fs;
+	@Autowired 
+	ClienteService cs;
 
 	@GetMapping("/all")
 	public ResponseEntity<?> getAll() {
@@ -36,9 +39,18 @@ public class FatturaController {
 		return ResponseEntity.ok(fs.getById(id));
 	}
 
-	@PostMapping
-	public ResponseEntity<?> save(@RequestBody Fattura fattura) {
-		return ResponseEntity.ok(fs.save(fattura));
+	@PostMapping("/cliente/{idCliente}")
+	public ResponseEntity<?> saveForCliente(@RequestBody Fattura fattura, @PathVariable long idCliente) {
+	    Cliente cliente = cs.getById(idCliente); // Ottieni il cliente dal suo ID
+
+	    if (cliente == null) {
+	        return ResponseEntity.badRequest().body("Cliente non trovato");
+	    }
+
+	    fattura.setCliente(cliente); // Imposta il cliente per la fattura
+	    Fattura savedFattura = fs.save(fattura); // Salva la fattura
+
+	    return ResponseEntity.ok(savedFattura);
 	}
 
 	@PutMapping("/{id}")

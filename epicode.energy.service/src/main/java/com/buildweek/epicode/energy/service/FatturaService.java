@@ -53,6 +53,7 @@ public class FatturaService {
 
 	//Aggiunta di una fattura
 	public Fattura save(Fattura f) {
+		
 		return db.save(f);
 	}
 	

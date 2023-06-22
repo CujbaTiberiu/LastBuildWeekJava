@@ -110,12 +110,11 @@ public class ClienteService{
 			throw new EntityExistsException("Pec già presente nel DataBase!");		
 		}
 		if(dbcliente.existsByTelefono(cliente.getTelefono())) {
-			throw new EntityExistsException("Teelfono già presente nel DataBase!");		
+			throw new EntityExistsException("Telefono già presente nel DataBase!");		
 		}
 		if(dbcliente.existsByTelefonoContatto(cliente.getTelefonoContatto())) {
-			throw new EntityExistsException("Teelfono Contatto già presente nel DataBase!");		
+			throw new EntityExistsException("Telefono Contatto già presente nel DataBase!");		
 		}
-		
 		
 		return dbcliente.save(cliente);
 	}
@@ -131,6 +130,9 @@ public class ClienteService{
 	
 	//Cancellazione Cliente
 	public String deleteCliente(Long id){
+		if(!dbcliente.existsById(id)) {
+			throw new EntityNotFoundException("Cliente non esiste");
+		}
 		dbcliente.deleteById(id);
 		return "Cliente Cancellato";
 	}
