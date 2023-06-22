@@ -23,6 +23,7 @@ import com.buildweek.epicode.energy.repository.ClientiRepo;
 import com.buildweek.epicode.energy.repository.Indirizzorepo;
 import com.github.javafaker.Faker;
 
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
@@ -96,6 +97,26 @@ public class ClienteService{
 	
 	//Aggiunta Nuovo Cliente
 	public Cliente addCliente(Cliente cliente) {
+		if(dbcliente.existsByEmail(cliente.getEmail())) {
+			throw new EntityExistsException("Email già presente nel DataBase!");		
+		}
+		if(dbcliente.existsByEmailContatto(cliente.getEmailContatto())) {
+			throw new EntityExistsException("EmailContatto già presente nel DataBase!");		
+		}
+		if(dbcliente.existsByPartitaIva(cliente.getPartitaIva())) {
+			throw new EntityExistsException("Partita IVA già presente nel DataBase!");		
+		}
+		if(dbcliente.existsByPec(cliente.getPec())) {
+			throw new EntityExistsException("Pec già presente nel DataBase!");		
+		}
+		if(dbcliente.existsByTelefono(cliente.getTelefono())) {
+			throw new EntityExistsException("Teelfono già presente nel DataBase!");		
+		}
+		if(dbcliente.existsByTelefonoContatto(cliente.getTelefonoContatto())) {
+			throw new EntityExistsException("Teelfono Contatto già presente nel DataBase!");		
+		}
+		
+		
 		return dbcliente.save(cliente);
 	}
 

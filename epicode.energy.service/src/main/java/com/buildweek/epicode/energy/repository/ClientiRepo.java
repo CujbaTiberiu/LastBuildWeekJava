@@ -31,4 +31,14 @@ public interface ClientiRepo  extends JpaRepository<Cliente, Long> {
 	public List<Cliente> findByDataUltimoContatto(LocalDate data);
 	public List<Cliente> findByNomeContattoContainingIgnoreCase(String parteDelNome);
 	
+	
+	//Exist
+	public boolean existsByEmailContatto (String email);
+	public boolean existsByEmail(String email);
+	public boolean existsByPec(String pec);
+	public boolean existsByTelefonoContatto(String telefono);
+	public boolean existsByTelefono(String telefono);
+	public boolean existsByPartitaIva(String partita_iva);
+	
+	
 }

@@ -35,8 +35,8 @@ public class ComuneService {
 	}
 	
 	//Modifica Comune
-	public Optional<?> putComune(Comune comune) {
-		if(!db.existsById(comune.getId())) {
+	public Optional<?> putComune(Comune comune,long id) {
+		if(!db.existsById(id)) {
 			throw new EntityNotFoundException("Comune non esiste");
 		}else {
 			return Optional.of(db.save(comune));

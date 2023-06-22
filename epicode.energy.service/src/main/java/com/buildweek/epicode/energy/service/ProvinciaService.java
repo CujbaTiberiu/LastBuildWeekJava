@@ -37,9 +37,9 @@ public class ProvinciaService {
 		
 	}
 	
-	//Modifica Indirizzo
-	public Optional<?> putIndirizzo(Provincia provincia) {
-		if(!db.existsById(provincia.getId())) {
+	//Modifica Provincia
+	public Optional<?> putProvincia(Provincia provincia,long id) {
+		if(!db.existsById(id)) {
 			throw new EntityNotFoundException("Provincia non esiste");
 		}else {
 			return Optional.of(db.save(provincia));

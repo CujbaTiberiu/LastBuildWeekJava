@@ -35,7 +35,7 @@ public class Comune {
 	 @CsvBindByPosition(position = 0, format = ";")
 	private String nome;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
 	private Provincia provincia;
-
+	
 }
