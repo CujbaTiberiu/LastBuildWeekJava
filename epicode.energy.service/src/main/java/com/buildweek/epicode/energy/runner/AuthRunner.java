@@ -2,9 +2,11 @@ package com.buildweek.epicode.energy.runner;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.collections4.Get;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -17,9 +19,11 @@ import com.buildweek.epicode.energy.enums.StatoFattura;
 import com.buildweek.epicode.energy.model.Comune;
 import com.buildweek.epicode.energy.model.ComuneDTOcsv;
 import com.buildweek.epicode.energy.model.Provincia;
+import com.buildweek.epicode.energy.payload.RegisterDto;
 import com.buildweek.epicode.energy.repository.RoleRepository;
 import com.buildweek.epicode.energy.repository.UserRepository;
 import com.buildweek.epicode.energy.service.AuthService;
+import com.buildweek.epicode.energy.service.AuthServiceImpl;
 import com.buildweek.epicode.energy.service.ClienteService;
 import com.buildweek.epicode.energy.service.ComuneService;
 import com.buildweek.epicode.energy.service.FatturaService;
@@ -28,7 +32,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 @Component
 public class AuthRunner implements ApplicationRunner {
-
+@Autowired AuthServiceImpl auth;
 	@Autowired
 	RoleRepository roleRepository;
 	@Autowired
@@ -59,9 +63,9 @@ public class AuthRunner implements ApplicationRunner {
 
 		saveComuniDb();
 
-		Creaclienti(10);
+		Creaclienti(25);
 		creaFattura(10);
-		
+		createadmin();
 		
 		System.out.println(dbFattura.findBystatofattura(StatoFattura.CONSEGNATO));
 		System.out.println(dbFattura.findBystatofattura(StatoFattura.ACCETTATO));
@@ -134,5 +138,17 @@ public class AuthRunner implements ApplicationRunner {
 			dbFattura.createFakeFattura();
 		}
 	}
-
+	
+public void createadmin() {
+	RegisterDto admin = new RegisterDto();
+	Set<String> ruolo=new HashSet<String>();
+	ruolo.add("ADMIN");
+	admin.setEmail("admin@gmail.com");
+	admin.setLastName("admin");
+	admin.setName("admin");
+	admin.setPassword("admin");
+	admin.setRoles(ruolo);
+	admin.setUsername("admin");
+	auth.register(admin);
+}
 }
