@@ -2,6 +2,7 @@ package com.buildweek.epicode.energy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.buildweek.epicode.energy.service.ComuneService;
 
 @RestController
 @RequestMapping("/api/comune")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ComuneController {
 		
 	@Autowired ComuneService cs;
