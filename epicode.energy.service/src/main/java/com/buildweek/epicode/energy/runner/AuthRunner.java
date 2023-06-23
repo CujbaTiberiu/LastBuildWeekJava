@@ -64,7 +64,7 @@ public class AuthRunner implements ApplicationRunner {
 		saveComuniDb();
 
 		Creaclienti(25);
-		creaFattura(10);
+		creaFattura(50);
 		createadmin();
 		
 		//System.out.println(dbFattura.findBystatofattura(StatoFattura.CONSEGNATO));
