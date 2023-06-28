@@ -64,6 +64,11 @@ public class FatturaController {
 	public ResponseEntity<?> delete(@PathVariable long id) {
 		return ResponseEntity.ok(fs.deleteById(id));
 	}
+	
+	@DeleteMapping
+	public ResponseEntity<?> deleteFattura(@RequestBody Fattura fattura) {
+		return ResponseEntity.ok(fs.deleteByFattura(fattura));
+	}
 
 	@GetMapping("/byIdCliente/{idCliente}")
 	public ResponseEntity<?> getFattureByCliente(@PathVariable long idCliente) {

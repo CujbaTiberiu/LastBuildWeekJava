@@ -50,6 +50,7 @@ public class FatturaService {
 	}
 
 	//CRUD
+	
 
 	//Aggiunta di una fattura
 	public Fattura save(Fattura f) {
@@ -82,6 +83,11 @@ public class FatturaService {
 	//Cancelazione di una fattura
 	public String deleteById(Long id) {
 		db.deleteById(id);
+		return "Fattura eleminata dal DataBase!";
+	}
+	
+	public String deleteByFattura(Fattura fattura) {
+		db.delete(fattura);
 		return "Fattura eleminata dal DataBase!";
 	}
 	
